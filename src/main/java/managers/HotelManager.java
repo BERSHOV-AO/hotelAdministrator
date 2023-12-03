@@ -14,4 +14,9 @@ public class HotelManager {
         roomManager.changeRoomStatus(room, roomStatus);
     }
 
+    // Изменить цену номера
+    public void changeRoomPrice(Room room, double price) {
+        roomManager.changeRoomPrice(room, price);
+    }
+
 }

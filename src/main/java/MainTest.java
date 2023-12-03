@@ -24,6 +24,9 @@ public class MainTest {
         System.out.println(room1);
         System.out.println(room2);
 
+        hotelManager.changeRoomPrice(room1, 5000);
+        System.out.println(room1);
+
 
 
 
