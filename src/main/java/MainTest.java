@@ -1,7 +1,9 @@
 import enums.RoomStatus;
+import enums.ServiceType;
 import managers.HotelManager;
 import managers.RoomManager;
 import models.Room;
+import models.Service;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -26,6 +28,18 @@ public class MainTest {
 
         hotelManager.changeRoomPrice(room1, 5000);
         System.out.println(room1);
+
+        Service service1 = new Service (ServiceType.DINNER, 150);
+        Service service2 = new Service (ServiceType.LAUNDRY, 100);
+
+        hotelManager.createService(service1);
+        hotelManager.createService(service2);
+
+        hotelManager.changeServiceOnPrice(service1, 222);
+
+        System.out.println(service1);
+        System.out.println(service2);
+
 
 
 
