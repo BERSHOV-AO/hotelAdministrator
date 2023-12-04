@@ -4,12 +4,22 @@ import enums.RoomStatus;
 import models.Room;
 import storages.RoomsStorage;
 
+import java.util.List;
+
 public class RoomManager {
     public RoomsStorage roomsStorage = new RoomsStorage();
 
     public void addRoom(Room room) {
         roomsStorage.addRoom(room);
     }
+
+    public void printAllRooms() {
+        List<Room> tempRooms = roomsStorage.getRooms();
+        for (Room room : tempRooms) {
+            System.out.println(room);
+        }
+    }
+
 
     // Изменить статус номера
     public void changeRoomStatus(Room room, RoomStatus status) {

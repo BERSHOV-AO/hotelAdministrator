@@ -3,41 +3,73 @@ package models;
 import java.util.Date;
 
 public class Guest {
-    private String name;
-    private int roomNumber;
-    private Date checkInDate;
-    private Date checkOutDate;
 
-    public Guest(String name, int roomNumber, Date checkInDate, Date checkOutDate) {
-        this.name = name;
-        this.roomNumber = roomNumber;
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
+    private int id = 0;
+    private String lastName;
+
+    public Guest(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public int getRoomNumber() {
-        return roomNumber;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Date getCheckInDate() {
-        return checkInDate;
+    public String getLastName() {
+        return lastName;
     }
 
-    public Date getCheckOutDate() {
-        return checkOutDate;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "Guest{" +
-                "name='" + name + '\'' +
-                ", roomNumber=" + roomNumber +
-                ", checkInDate=" + checkInDate +
-                ", checkOutDate=" + checkOutDate +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
+
+    //    private String name;
+//    private int roomNumber;
+//    private Date checkInDate;
+//    private Date checkOutDate;
+//
+//    public Guest(String name, int roomNumber, Date checkInDate, Date checkOutDate) {
+//        this.name = name;
+//        this.roomNumber = roomNumber;
+//        this.checkInDate = checkInDate;
+//        this.checkOutDate = checkOutDate;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public int getRoomNumber() {
+//        return roomNumber;
+//    }
+//
+//    public Date getCheckInDate() {
+//        return checkInDate;
+//    }
+//
+//    public Date getCheckOutDate() {
+//        return checkOutDate;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Guest{" +
+//                "name='" + name + '\'' +
+//                ", roomNumber=" + roomNumber +
+//                ", checkInDate=" + checkInDate +
+//                ", checkOutDate=" + checkOutDate +
+//                '}';
+//    }
 }

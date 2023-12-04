@@ -12,19 +12,21 @@ public class MainTest {
 
         Room room1 = new Room(1, 2, 1000, 3);
         Room room2 = new Room(2, 4, 2000, 2);
+        Room room3 = new Room(3, 3, 1800, 2);
+        Room room4 = new Room(4, 5, 2100, 3);
 
         hotelManager.createRoom(room1);
         hotelManager.createRoom(room2);
+        hotelManager.createRoom(room3);
+        hotelManager.createRoom(room4);
 
         hotelManager.changeRoomStatus(room1, RoomStatus.OCCUPIED);
+        hotelManager.printRooms();
 
-        System.out.println(room1);
-        System.out.println(room2);
-
+        System.out.println("--------------------------------------------------");
         hotelManager.changeRoomStatus(room2, RoomStatus.UNDER_REPAIR);
 
-        System.out.println(room1);
-        System.out.println(room2);
+        hotelManager.printRooms();
 
         hotelManager.changeRoomPrice(room1, 5000);
         System.out.println(room1);
@@ -39,6 +41,8 @@ public class MainTest {
 
         System.out.println(service1);
         System.out.println(service2);
+
+
 
 
 

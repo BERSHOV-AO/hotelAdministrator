@@ -1,14 +1,29 @@
 package managers;
 
 import enums.RoomStatus;
+import models.Guest;
 import models.Room;
 import models.Service;
 
 public class HotelManager {
     RoomManager roomManager = new RoomManager();
     ServiceManager serviceManager = new ServiceManager();
+    GuestManager guestManager = new GuestManager();
 
     //------------------ Guest -----------------------
+
+    public void addGuest(Guest guest) {
+        guestManager.addOnGuest(guest);
+    }
+
+    public void deleteGuest(Guest guest) {
+        guestManager.deleteGuest(guest);
+    }
+
+
+
+
+
 
 
     //------------------- Room -----------------------
@@ -24,6 +39,10 @@ public class HotelManager {
     // Изменить цену номера
     public void changeRoomPrice(Room room, double price) {
         roomManager.changeRoomPrice(room, price);
+    }
+
+    public void printRooms() {
+        roomManager.printAllRooms();
     }
 
     // -------------------- Service ---------------------

@@ -19,4 +19,6 @@ public class ServiceManager {
                     r.setPrice(price);
                 });
     }
+
+
 }
