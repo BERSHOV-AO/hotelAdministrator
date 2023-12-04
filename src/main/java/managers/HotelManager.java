@@ -1,14 +1,21 @@
 package managers;
 
+import enums.RoomHistoryStatus;
 import enums.RoomStatus;
 import models.Guest;
 import models.Room;
+import models.RoomHistory;
 import models.Service;
+
+import java.time.LocalDate;
 
 public class HotelManager {
     RoomManager roomManager = new RoomManager();
     ServiceManager serviceManager = new ServiceManager();
     GuestManager guestManager = new GuestManager();
+    RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
+
+    StayInfoManager stayInfoManager = new StayInfoManager();
 
     //------------------ Guest -----------------------
 
@@ -20,10 +27,9 @@ public class HotelManager {
         guestManager.deleteGuest(guest);
     }
 
-
-
-
-
+    public void printAllGuest() {
+        guestManager.printGuest();
+    }
 
 
     //------------------- Room -----------------------
@@ -41,8 +47,15 @@ public class HotelManager {
         roomManager.changeRoomPrice(room, price);
     }
 
-    public void printRooms() {
-        roomManager.printAllRooms();
+//    public void printAllRooms() {
+//        roomManager.printRooms();
+//    }
+
+    //--------------------- Room History ----------------------
+
+
+    public void printAllRoomHistories() {
+        roomHistoryManager.printRoomHistories();
     }
 
     // -------------------- Service ---------------------
@@ -54,4 +67,64 @@ public class HotelManager {
         serviceManager.changeServicePrice(service, price);
     }
 
+    public void printAllService() {
+        serviceManager.printService();
+    }
+
+    public void showStayInfo() {
+        stayInfoManager.printStayInfo();
+    }
+
+    //----------------------------------------------------
+    public void checkInGuestInRoom(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
+
+        if (room.getStatus() == RoomStatus.EMPTY) {
+            RoomHistory newRoomHistory = new RoomHistory();
+
+            newRoomHistory.setGuest(guest);
+            newRoomHistory.setRoom(room);
+            newRoomHistory.setCheckInDate(checkInDate);
+            newRoomHistory.setCheckOutDate(checkOutDate);
+            newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
+
+            stayInfoManager.addStayInfo(room.getRoomNumber(), guest, checkInDate, checkOutDate);
+
+            roomHistoryManager.addHistory(newRoomHistory);
+            roomManager.updateRoomHistory(room, newRoomHistory);
+            roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
+
+
+        }
+    }
+
+    public void checkOutGuestFromRoom(Guest guest, Room room) {
+
+        if (room.getStatus() == RoomStatus.OCCUPIED) {
+            RoomHistory newRoomHistory = new RoomHistory();
+
+            newRoomHistory.setGuest(guest);
+            newRoomHistory.setRoom(room);
+            newRoomHistory.setCheckInDate(null);
+            newRoomHistory.setCheckOutDate(null);
+            newRoomHistory.setStatus(RoomHistoryStatus.CHECKOUT);
+
+            stayInfoManager.deleteStayInfo(room.getRoomNumber());
+
+            roomHistoryManager.addHistory(newRoomHistory);
+            roomManager.updateRoomHistory(room, newRoomHistory);
+            roomManager.changeRoomStatus(room, RoomStatus.EMPTY);
+
+
+
+
+        } else {
+            System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");
+        }
+
+    }
 }
+
+
+
+
+

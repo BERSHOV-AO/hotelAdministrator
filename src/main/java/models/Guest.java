@@ -7,6 +7,8 @@ public class Guest {
     private int id = 0;
     private String lastName;
 
+    private RoomHistory history;
+
     public Guest(String lastName) {
         this.lastName = lastName;
     }
@@ -27,12 +29,12 @@ public class Guest {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "Guest{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public RoomHistory getHistory() {
+        return history;
+    }
+
+    public void setHistory(RoomHistory history) {
+        this.history = history;
     }
 
     //    private String name;
@@ -72,4 +74,12 @@ public class Guest {
 //                ", checkOutDate=" + checkOutDate +
 //                '}';
 //    }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "lastName='" + lastName + '\'' +
+                ", history=" + history +
+                '}';
+    }
 }

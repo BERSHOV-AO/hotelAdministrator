@@ -2,6 +2,8 @@ package models;
 
 import enums.RoomStatus;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Room {
@@ -11,28 +13,46 @@ public class Room {
     private int capacity;
     private RoomStatus status;
 
-    public Room(int roomNumber, int stars, double price, int capacity) {
+    private RoomHistory roomHistories;
+
+    public Room(int roomNumber, int stars, double price, int capacity, RoomStatus status) {
         this.roomNumber = roomNumber;
         this.stars = stars;
         this.price = price;
         this.capacity = capacity;
-        this.status = RoomStatus.FREE;
+        this.status = status;
     }
 
     public int getRoomNumber() {
         return roomNumber;
     }
 
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
     public int getStars() {
         return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     public double getPrice() {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public int getCapacity() {
         return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public RoomStatus getStatus() {
@@ -43,35 +63,25 @@ public class Room {
         this.status = status;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+
+    public RoomHistory getRoomHistories() {
+        return roomHistories;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setRoomHistories(RoomHistory roomHistories) {
+        this.roomHistories = roomHistories;
     }
+
 
     @Override
     public String toString() {
-        return "HotelRoom{" +
+        return "Room{" +
                 "roomNumber=" + roomNumber +
                 ", stars=" + stars +
                 ", price=" + price +
                 ", capacity=" + capacity +
                 ", status=" + status +
+          //      ", roomHistories=" + roomHistories +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Room room = (Room) o;
-        return roomNumber == room.roomNumber && stars == room.stars && Double.compare(room.price, price) == 0 && capacity == room.capacity && status == room.status;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(roomNumber, stars, price, capacity, status);
     }
 }

@@ -1,6 +1,8 @@
 package storages;
 
+import enums.RoomStatus;
 import models.Room;
+import models.RoomHistory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,4 +21,17 @@ public class RoomsStorage {
     public List<Room> getRooms() {
         return rooms;
     }
+
+
+    public void updateRoomHistory(Room room, RoomHistory history) {
+
+        rooms.stream()
+                .filter(r -> r.getRoomNumber() == room.getRoomNumber())
+                .findFirst()
+                .ifPresent(r -> {
+                    r.setRoomHistories(history);
+
+                });
+    }
 }
+

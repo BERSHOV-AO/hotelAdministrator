@@ -1,7 +1,6 @@
 package managers;
 
 import models.Guest;
-import models.Room;
 import storages.GuestStorage;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class GuestManager {
         guestStorage.deleteGuest(guest);
     }
 
-    public void printAllGuest() {
+    public void printGuest() {
         List<Guest> tempGuest = guestStorage.getGuests();
         for (Guest guest : tempGuest) {
             System.out.println(guest);

@@ -2,6 +2,7 @@ package managers;
 
 import enums.RoomStatus;
 import models.Room;
+import models.RoomHistory;
 import storages.RoomsStorage;
 
 import java.util.List;
@@ -13,12 +14,12 @@ public class RoomManager {
         roomsStorage.addRoom(room);
     }
 
-    public void printAllRooms() {
-        List<Room> tempRooms = roomsStorage.getRooms();
-        for (Room room : tempRooms) {
-            System.out.println(room);
-        }
-    }
+//    public void printRooms() {
+//        List<Room> tempRooms = roomsStorage.getRooms();
+//        for (Room room : tempRooms) {
+//            System.out.println(room);
+//        }
+//    }
 
 
     // Изменить статус номера
@@ -39,5 +40,9 @@ public class RoomManager {
                 .ifPresent(r -> {
                     r.setPrice(price);
                 });
+    }
+
+    public void updateRoomHistory(Room room, RoomHistory history) {
+        roomsStorage.updateRoomHistory(room, history);
     }
 }

@@ -1,7 +1,7 @@
 package enums;
 
 public enum RoomStatus {
-    FREE,
+    EMPTY,
     OCCUPIED,
     UNDER_REPAIR,
     SERVICE
