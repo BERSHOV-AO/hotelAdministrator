@@ -12,7 +12,6 @@ public class MainTest {
 
         HotelManager hotelManager = new HotelManager();
 
-
         System.out.println("------------------------------ROOM--------------------------------");
         Room room1 = new Room(1, 2, 1000, 3, RoomStatus.EMPTY);
         Room room2 = new Room(2, 4, 2000, 2, RoomStatus.EMPTY);
@@ -67,31 +66,23 @@ public class MainTest {
 
         hotelManager.printAllGuest();
 
+        System.out.println("-------------------------CheckInGuestInRoom-----------------------------");
         hotelManager.checkInGuestInRoom(guest1, room1, LocalDate.of(2023, 12, 05),
                 LocalDate.of(2023, 12, 10));
-        hotelManager.checkInGuestInRoom(guest2, room2, LocalDate.of(2023, 12, 11),
+        hotelManager.checkInGuestInRoom(guest2, room3, LocalDate.of(2023, 12, 11),
                 LocalDate.of(2023, 12, 17));
-
-
+        hotelManager.checkInGuestInRoom(guest3, room4, LocalDate.of(2023, 12, 07),
+                LocalDate.of(2023, 12, 21));
         hotelManager.showStayInfo();
 
+        System.out.println("----------------------CheckOutGuestFromRoom-----------------------------");
+        hotelManager.checkOutGuestFromRoom(guest2, room3);
+        hotelManager.showStayInfo();
 
-
-
-//        hotelManager.checkInGuestInRoom(guest2, room2, LocalDate.of(2023, 12, 22), LocalDate.of(2023, 12, 28));
-//        hotelManager.showStayInfo();
-//
-//        System.out.println("--------------------checkOutGuestFromRoom(guest1, room1)-------------------------");
-//
-//        hotelManager.checkOutGuestFromRoom(guest1, room1);
-//
-//        hotelManager.showStayInfo();
-//
-//
-//        System.out.println("---------------------------------------------");
-//
-//        //  hotelManager.printAllRoomHistories();
-
-
+        /**
+         * Отдельно сохраняем историю
+         */
+        System.out.println("----------------------printAllRoomHistories-----------------------------");
+        hotelManager.printAllRoomHistories();
     }
 }

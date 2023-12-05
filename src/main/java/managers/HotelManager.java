@@ -12,7 +12,7 @@ public class HotelManager {
     GuestManager guestManager = new GuestManager();
     RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
 
-    StayInfoManager gitstayInfoManager = new StayInfoManager();
+    StayInfoManager stayInfoManager = new StayInfoManager();
 
     //------------------ Guest -----------------------
 
@@ -86,29 +86,19 @@ public class HotelManager {
 
             stayInfoManager.addStayInfo(room.getRoomNumber(), new StayInfo(guest, checkInDate, checkOutDate));
 
+
             roomHistoryManager.addHistory(newRoomHistory);
             roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
-
-
+        } else {
+            System.out.println("Заселить в комнату " + room.getRoomNumber() + " не представляется возможным. "
+                    + "Статус комнаты = " + room.getStatus());
         }
     }
 
     public void checkOutGuestFromRoom(Guest guest, Room room) {
-
         if (room.getStatus() == RoomStatus.OCCUPIED) {
-//            RoomHistory newRoomHistory = new RoomHistory();
-//
-//            newRoomHistory.setGuest(guest);
-//            newRoomHistory.setRoom(room);
-//            newRoomHistory.setCheckInDate(null);
-//            newRoomHistory.setCheckOutDate(null);
-//            newRoomHistory.setStatus(RoomHistoryStatus.CHECKOUT);
-
             stayInfoManager.deleteStayInfo(room.getRoomNumber());
-
-        //    roomHistoryManager.addHistory(newRoomHistory);
             roomManager.changeRoomStatus(room, RoomStatus.EMPTY);
-
         } else {
             System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");
         }

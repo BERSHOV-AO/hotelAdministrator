@@ -2,17 +2,12 @@ package models;
 
 import enums.RoomStatus;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 public class Room {
     private int roomNumber;
     private int stars;
     private double price;
     private int capacity;
     private RoomStatus status;
-
 
     public Room(int roomNumber, int stars, double price, int capacity, RoomStatus status) {
         this.roomNumber = roomNumber;
@@ -70,7 +65,6 @@ public class Room {
                 ", price=" + price +
                 ", capacity=" + capacity +
                 ", status=" + status +
-          //      ", roomHistories=" + roomHistories +
                 '}';
     }
 }

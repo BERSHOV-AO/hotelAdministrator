@@ -1,6 +1,5 @@
 package storages;
 
-import models.Guest;
 import models.RoomHistory;
 
 import java.util.ArrayList;

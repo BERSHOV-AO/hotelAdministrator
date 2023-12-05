@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ServicesStorage {
     public List<Service> services = new ArrayList<>();
+
     public void addService(Service service) {
         services.add(service);
     }
@@ -20,5 +21,4 @@ public class ServicesStorage {
     public List<Service> getServices() {
         return services;
     }
-
 }

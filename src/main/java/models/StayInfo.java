@@ -37,7 +37,6 @@ public class StayInfo {
         this.guest = guest;
     }
 
-
     @Override
     public String toString() {
         return "StayInfo{" +

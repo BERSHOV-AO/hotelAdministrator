@@ -1,23 +1,15 @@
 package storages;
 
-import models.Guest;
-import models.Room;
 import models.StayInfo;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class StayInfoStorage {
 
-    private Map<Integer, StayInfo> infoStorage = new HashMap<>();
+    private Map<Integer, StayInfo> infoStorage = new ConcurrentHashMap<>();
 
-//    public void addStayInfo(int roomNumber, Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
-//        infoStorage.put(roomNumber, new StayInfo(guest, checkInDate, checkOutDate));
-//    }
-
-    public void addStayInfo(int roomNumber,StayInfo stayInfo) {
+    public void addStayInfo(int roomNumber, StayInfo stayInfo) {
         infoStorage.put(roomNumber, stayInfo);
     }
 
@@ -28,7 +20,6 @@ public class StayInfoStorage {
     public Map<Integer, StayInfo> getInfoStorage() {
         return infoStorage;
     }
-
 
 
 }

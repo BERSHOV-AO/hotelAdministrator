@@ -15,8 +15,8 @@ public class RoomHistoryManager {
     }
 
     public void printRoomHistories() {
-        List<RoomHistory> tempRoomHistories =  roomHistoryStorage.getRoomHistories();
-        for(RoomHistory roomHistory : tempRoomHistories) {
+        List<RoomHistory> tempRoomHistories = roomHistoryStorage.getRoomHistories();
+        for (RoomHistory roomHistory : tempRoomHistories) {
             System.out.println(roomHistory);
         }
     }

@@ -21,8 +21,6 @@ public class RoomManager {
         }
     }
 
-
-    // Изменить статус номера
     public void changeRoomStatus(Room room, RoomStatus status) {
         roomsStorage.getRooms().stream()
                 .filter(r -> r.getRoomNumber() == room.getRoomNumber())
@@ -32,7 +30,6 @@ public class RoomManager {
                 });
     }
 
-    // Изменить цену номера
     public void changeRoomPrice(Room room, double price) {
         roomsStorage.getRooms().stream()
                 .filter(r -> r.getRoomNumber() == room.getRoomNumber())

@@ -1,8 +1,6 @@
 package storages;
 
-import enums.RoomStatus;
 import models.Room;
-import models.RoomHistory;
 
 import java.util.ArrayList;
 import java.util.List;
