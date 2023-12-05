@@ -25,10 +25,4 @@ public class GuestStorage {
     public void deleteGuest(Guest guest) {
         guests.remove(guest);
     }
-
-
-
-
-
-
 }

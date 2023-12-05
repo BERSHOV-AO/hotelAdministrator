@@ -21,17 +21,5 @@ public class RoomsStorage {
     public List<Room> getRooms() {
         return rooms;
     }
-
-
-    public void updateRoomHistory(Room room, RoomHistory history) {
-
-        rooms.stream()
-                .filter(r -> r.getRoomNumber() == room.getRoomNumber())
-                .findFirst()
-                .ifPresent(r -> {
-                    r.setRoomHistories(history);
-
-                });
-    }
 }
 

@@ -14,12 +14,12 @@ public class RoomManager {
         roomsStorage.addRoom(room);
     }
 
-//    public void printRooms() {
-//        List<Room> tempRooms = roomsStorage.getRooms();
-//        for (Room room : tempRooms) {
-//            System.out.println(room);
-//        }
-//    }
+    public void printRooms() {
+        List<Room> tempRooms = roomsStorage.getRooms();
+        for (Room room : tempRooms) {
+            System.out.println(room);
+        }
+    }
 
 
     // Изменить статус номера
@@ -42,7 +42,4 @@ public class RoomManager {
                 });
     }
 
-    public void updateRoomHistory(Room room, RoomHistory history) {
-        roomsStorage.updateRoomHistory(room, history);
-    }
 }

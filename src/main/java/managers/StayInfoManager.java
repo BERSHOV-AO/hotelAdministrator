@@ -12,9 +12,14 @@ public class StayInfoManager {
 
     StayInfoStorage stayInfoStorage = new StayInfoStorage();
 
-    public void addStayInfo(int roomNumber, Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
-        stayInfoStorage.addStayInfo(roomNumber, guest, checkInDate, checkOutDate);
+//    public void addStayInfo(int roomNumber, Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
+//        stayInfoStorage.addStayInfo(roomNumber, guest, checkInDate, checkOutDate);
+//    }
+
+    public void addStayInfo(int roomNumber, StayInfo stayInfo) {
+        stayInfoStorage.addStayInfo(roomNumber, stayInfo);
     }
+
 
 
     public void deleteStayInfo(int roomNumber) {

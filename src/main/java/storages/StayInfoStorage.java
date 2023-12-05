@@ -13,8 +13,12 @@ public class StayInfoStorage {
 
     private Map<Integer, StayInfo> infoStorage = new HashMap<>();
 
-    public void addStayInfo(int roomNumber, Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
-        infoStorage.put(roomNumber, new StayInfo(guest, checkInDate, checkOutDate));
+//    public void addStayInfo(int roomNumber, Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
+//        infoStorage.put(roomNumber, new StayInfo(guest, checkInDate, checkOutDate));
+//    }
+
+    public void addStayInfo(int roomNumber,StayInfo stayInfo) {
+        infoStorage.put(roomNumber, stayInfo);
     }
 
     public void deleteStayInfo(int roomNumber) {

@@ -13,7 +13,6 @@ public class Room {
     private int capacity;
     private RoomStatus status;
 
-    private RoomHistory roomHistories;
 
     public Room(int roomNumber, int stars, double price, int capacity, RoomStatus status) {
         this.roomNumber = roomNumber;
@@ -62,16 +61,6 @@ public class Room {
     public void setStatus(RoomStatus status) {
         this.status = status;
     }
-
-
-    public RoomHistory getRoomHistories() {
-        return roomHistories;
-    }
-
-    public void setRoomHistories(RoomHistory roomHistories) {
-        this.roomHistories = roomHistories;
-    }
-
 
     @Override
     public String toString() {

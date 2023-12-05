@@ -13,15 +13,6 @@ public class StayInfo {
         this.guest = guest;
     }
 
-//    public LocalDate getCheckInDate() {
-//        return checkInDate;
-//    }
-//
-//    public LocalDate getCheckOutDate() {
-//        return checkOutDate;
-//    }
-
-
     public LocalDate getCheckInDate() {
         return checkInDate;
     }
