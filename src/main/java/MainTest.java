@@ -13,15 +13,28 @@ public class MainTest {
         HotelManager hotelManager = new HotelManager();
 
         System.out.println("------------------------------ROOM--------------------------------");
-        Room room1 = new Room(1, 2, 1000, 3, RoomStatus.EMPTY);
+        Room room1 = new Room(1, 1, 1000, 3, RoomStatus.EMPTY);
         Room room2 = new Room(2, 4, 2000, 2, RoomStatus.EMPTY);
-        Room room3 = new Room(3, 3, 1800, 2, RoomStatus.EMPTY);
+        Room room3 = new Room(3, 3, 1800, 1, RoomStatus.EMPTY);
         Room room4 = new Room(4, 5, 2100, 3, RoomStatus.EMPTY);
+        Room room5 = new Room(5, 1, 2300, 1, RoomStatus.EMPTY);
+        Room room6 = new Room(6, 4, 1800, 2, RoomStatus.EMPTY);
+        Room room7 = new Room(7, 5, 1700, 4, RoomStatus.EMPTY);
+        Room room8 = new Room(8, 5, 2500, 1, RoomStatus.EMPTY);
+        Room room9 = new Room(9, 1, 3000, 3, RoomStatus.EMPTY);
+        Room room10 = new Room(10, 2, 2200, 2, RoomStatus.EMPTY);
 
         hotelManager.createRoom(room1);
         hotelManager.createRoom(room2);
         hotelManager.createRoom(room3);
         hotelManager.createRoom(room4);
+        hotelManager.createRoom(room5);
+        hotelManager.createRoom(room6);
+        hotelManager.createRoom(room7);
+        hotelManager.createRoom(room8);
+        hotelManager.createRoom(room9);
+        hotelManager.createRoom(room10);
+
         hotelManager.printAllRooms();
 
         System.out.println("--changeRoomStatus--");
@@ -36,7 +49,30 @@ public class MainTest {
         hotelManager.changeRoomPrice(room4, 2800);
         hotelManager.printAllRooms();
 
-        System.out.println("------------------------------SERVICE--------------------------------");
+        // printDetailsOfRoom
+        hotelManager.printDetailsOfRoom(room2);
+
+        System.out.println("---------------------------sortRoomsByPrice---------------------------");
+        // sortRoomsByPrice
+        hotelManager.sortRoomsByPrice();
+        System.out.println("-------------------------sortRoomsByCapacity--------------------------");
+        // sortRoomsByCapacity
+        hotelManager.sortRoomsByCapacity();
+        System.out.println("-------------------------sortRoomsByStars-----------------------------");
+        // sortRoomsByStars
+        hotelManager.sortRoomsByStars();
+        // sortedEmptyRoomsByStars
+        System.out.println("--------------------sortEmptyRoomsByPrice---------------------------");
+        hotelManager.sortEmptyRoomsByPrice();
+        // sortEmptyRoomsByCapacity
+        System.out.println("--------------------sortEmptyRoomsByCapacity--------------------------");
+        hotelManager.sortEmptyRoomsByCapacity();
+        // sortEmptyRoomsByStars
+        System.out.println("----------------------sortEmptyRoomsByStars---------------------------");
+        hotelManager.sortEmptyRoomsByStars();
+        hotelManager.totalCountEmptyRooms();
+
+        System.out.println("------------------------------SERVICE---------------------------------");
         Service service1 = new Service(ServiceType.BREAKFAST, 150);
         Service service2 = new Service(ServiceType.LUNCH, 100);
         Service service3 = new Service(ServiceType.DINNER, 250);

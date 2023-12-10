@@ -5,6 +5,7 @@ import enums.RoomStatus;
 import models.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class HotelManager {
     RoomManager roomManager = new RoomManager();
@@ -47,6 +48,57 @@ public class HotelManager {
     public void printAllRooms() {
         roomManager.printRooms();
     }
+
+    public void printDetailsOfRoom(Room room) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Room details: ");
+        stringBuilder.append(roomManager.getRoomDetails(room));
+        System.out.println(stringBuilder.toString());
+    }
+
+    public void sortRoomsByPrice() {
+        List<Room> sortedRoomsByPrice = roomManager.getSortedRoomsByPrice();
+        sortedRoomsByPrice.stream().forEach(System.out::println);
+    }
+
+    public void sortRoomsByCapacity() {
+        List<Room> sortedRoomsByCapacity = roomManager.getSortedRoomsByCapacity();
+        sortedRoomsByCapacity.stream().forEach(System.out::println);
+    }
+
+    public void sortRoomsByStars() {
+        List<Room> sortedRoomsByStars = roomManager.getSortedRoomsByStars();
+        sortedRoomsByStars.stream().forEach(System.out::println);
+    }
+
+    public void sortEmptyRoomsByPrice() {
+        List<Room> sortedEmptyRoomsByStars = roomManager.getFreeRooms(roomManager.getSortedRoomsByPrice());
+        sortedEmptyRoomsByStars.stream().forEach(System.out::println);
+
+    }
+    public void sortEmptyRoomsByCapacity() {
+        List<Room> sortedEmptyRoomsByCapacity = roomManager.getFreeRooms(roomManager.getSortedRoomsByCapacity());
+        sortedEmptyRoomsByCapacity.stream().forEach(System.out::println);
+    }
+
+    public void sortEmptyRoomsByStars() {
+        List<Room> sortedEmptyRoomsByStars = roomManager.getFreeRooms(roomManager.getSortedRoomsByStars());
+        sortedEmptyRoomsByStars.stream().forEach(System.out::println);
+
+    }
+
+    public void totalCountEmptyRooms() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("total Count Empty Rooms: ");
+        stringBuilder.append(roomManager.totalCountEmptyRooms());
+        System.out.println(stringBuilder.toString());
+    }
+
+
+
+
 
     //--------------------- Room History ----------------------
 
