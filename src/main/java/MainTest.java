@@ -93,12 +93,16 @@ public class MainTest {
         Guest guest1 = new Guest("Alex");
         Guest guest2 = new Guest("Max");
         Guest guest3 = new Guest("Svetlana");
-        Guest guest4 = new Guest("Irina");
+        Guest guest4 = new Guest("Sergey");
+        Guest guest5 = new Guest("Irina");
+        Guest guest6 = new Guest("Aleksey");
 
         hotelManager.addGuest(guest1);
         hotelManager.addGuest(guest2);
         hotelManager.addGuest(guest3);
         hotelManager.addGuest(guest4);
+        hotelManager.addGuest(guest5);
+        hotelManager.addGuest(guest6);
 
         hotelManager.printAllGuest();
 
@@ -109,16 +113,39 @@ public class MainTest {
                 LocalDate.of(2023, 12, 17));
         hotelManager.checkInGuestInRoom(guest3, room4, LocalDate.of(2023, 12, 07),
                 LocalDate.of(2023, 12, 21));
+        hotelManager.checkInGuestInRoom(guest4, room5, LocalDate.of(2023, 12, 10),
+                LocalDate.of(2023, 12, 13));
+        hotelManager.checkInGuestInRoom(guest5, room6, LocalDate.of(2023, 12, 16),
+                LocalDate.of(2023, 12, 28));
+        hotelManager.checkInGuestInRoom(guest6, room7, LocalDate.of(2023, 12, 15),
+                LocalDate.of(2023, 12, 23));
+
         hotelManager.showStayInfo();
 
-        System.out.println("----------------------CheckOutGuestFromRoom-----------------------------");
-        hotelManager.checkOutGuestFromRoom(guest2, room3);
-        hotelManager.showStayInfo();
+        // hotelManager.sortGuestsByName();
+
+//        System.out.println("----------------------CheckOutGuestFromRoom-----------------------------");
+//        hotelManager.checkOutGuestFromRoom(guest2, room3);
+//        hotelManager.checkOutGuestFromRoom(guest3, room4);
+//
+//        hotelManager.showStayInfo();
+
+        System.out.println("-------------------------sortGuestsByName-----------------------------");
+        hotelManager.sortGuestsByName();
+
+
+//        System.out.println("------------------------showGuestsAlphabeticalOrder---------------------");
+//        hotelManager.showGuestsAlphabeticalOrder();
+
+        hotelManager.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
+
 
         /**
          * Отдельно сохраняем историю
          */
         System.out.println("----------------------printAllRoomHistories-----------------------------");
         hotelManager.printAllRoomHistories();
+
+
     }
 }

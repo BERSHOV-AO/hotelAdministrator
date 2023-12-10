@@ -12,7 +12,6 @@ public class HotelManager {
     ServiceManager serviceManager = new ServiceManager();
     GuestManager guestManager = new GuestManager();
     RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
-
     StayInfoManager stayInfoManager = new StayInfoManager();
 
     //------------------ Guest -----------------------
@@ -27,6 +26,10 @@ public class HotelManager {
 
     public void printAllGuest() {
         guestManager.printGuest();
+    }
+    public void sortGuestsByName() {
+        List<Guest> sortedVisitorsByName = guestManager.getSortedGuestsByAlphabet();
+        sortedVisitorsByName.stream().forEach(System.out::println);
     }
 
 
@@ -98,6 +101,20 @@ public class HotelManager {
 
 
 
+    //---------------------Stay Info -------------------------
+
+    public void showGuestsAlphabeticalOrder() {
+        stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
+
+    }
+
+    public void showFreeRoomsByDate(LocalDate date) {
+
+        stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
+
+    }
+
+
 
 
     //--------------------- Room History ----------------------
@@ -136,7 +153,7 @@ public class HotelManager {
             newRoomHistory.setCheckOutDate(checkOutDate);
             newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
 
-            stayInfoManager.addStayInfo(room.getRoomNumber(), new StayInfo(guest, checkInDate, checkOutDate));
+            stayInfoManager.addStayInfo(room, new StayInfo(guest, checkInDate, checkOutDate));
 
 
             roomHistoryManager.addHistory(newRoomHistory);
@@ -149,7 +166,7 @@ public class HotelManager {
 
     public void checkOutGuestFromRoom(Guest guest, Room room) {
         if (room.getStatus() == RoomStatus.OCCUPIED) {
-            stayInfoManager.deleteStayInfo(room.getRoomNumber());
+            stayInfoManager.deleteStayInfo(room);
             roomManager.changeRoomStatus(room, RoomStatus.EMPTY);
         } else {
             System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");
