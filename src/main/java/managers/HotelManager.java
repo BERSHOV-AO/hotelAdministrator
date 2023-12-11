@@ -14,8 +14,17 @@ public class HotelManager {
     RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
     StayInfoManager stayInfoManager = new StayInfoManager();
 
-    //------------------ Guest -----------------------
 
+    // ----------------- Service ---------------------
+    public void showServicesSortByPrice() {
+        serviceManager.sortByPrice().stream().forEach(System.out::println);
+    }
+
+    public void showServicesSortBySection() {
+        serviceManager.sortBySection().stream().forEach(System.out::println);
+    }
+
+    //------------------ Guest -----------------------
     public void addGuest(Guest guest) {
         guestManager.addOnGuest(guest);
     }
@@ -27,14 +36,12 @@ public class HotelManager {
     public void printAllGuest() {
         guestManager.printGuest();
     }
+
     public void sortGuestsByName() {
-        List<Guest> sortedVisitorsByName = guestManager.getSortedGuestsByAlphabet();
-        sortedVisitorsByName.stream().forEach(System.out::println);
+        guestManager.getSortedGuestsByAlphabet().stream().forEach(System.out::println);
     }
 
-
     //------------------- Room -----------------------
-
     public void createRoom(Room room) {
         roomManager.addRoom(room);
     }
@@ -61,34 +68,27 @@ public class HotelManager {
     }
 
     public void sortRoomsByPrice() {
-        List<Room> sortedRoomsByPrice = roomManager.getSortedRoomsByPrice();
-        sortedRoomsByPrice.stream().forEach(System.out::println);
+        roomManager.getSortedRoomsByPrice().stream().forEach(System.out::println);
     }
 
     public void sortRoomsByCapacity() {
-        List<Room> sortedRoomsByCapacity = roomManager.getSortedRoomsByCapacity();
-        sortedRoomsByCapacity.stream().forEach(System.out::println);
+        roomManager.getSortedRoomsByCapacity().stream().forEach(System.out::println);
     }
 
     public void sortRoomsByStars() {
-        List<Room> sortedRoomsByStars = roomManager.getSortedRoomsByStars();
-        sortedRoomsByStars.stream().forEach(System.out::println);
+        roomManager.getSortedRoomsByStars().stream().forEach(System.out::println);
     }
 
     public void sortEmptyRoomsByPrice() {
-        List<Room> sortedEmptyRoomsByStars = roomManager.getFreeRooms(roomManager.getSortedRoomsByPrice());
-        sortedEmptyRoomsByStars.stream().forEach(System.out::println);
-
+        roomManager.getFreeRooms(roomManager.getSortedRoomsByPrice()).stream().forEach(System.out::println);
     }
+
     public void sortEmptyRoomsByCapacity() {
-        List<Room> sortedEmptyRoomsByCapacity = roomManager.getFreeRooms(roomManager.getSortedRoomsByCapacity());
-        sortedEmptyRoomsByCapacity.stream().forEach(System.out::println);
+        roomManager.getFreeRooms(roomManager.getSortedRoomsByCapacity()).stream().forEach(System.out::println);
     }
 
     public void sortEmptyRoomsByStars() {
-        List<Room> sortedEmptyRoomsByStars = roomManager.getFreeRooms(roomManager.getSortedRoomsByStars());
-        sortedEmptyRoomsByStars.stream().forEach(System.out::println);
-
+        roomManager.getFreeRooms(roomManager.getSortedRoomsByStars()).stream().forEach(System.out::println);
     }
 
     public void totalCountEmptyRooms() {
@@ -98,7 +98,6 @@ public class HotelManager {
         stringBuilder.append(roomManager.totalCountEmptyRooms());
         System.out.println(stringBuilder.toString());
     }
-
 
     //---------------------Stay Info -------------------------
     public void showGuestsAlphabeticalOrder() {
@@ -117,8 +116,8 @@ public class HotelManager {
         System.out.println(stringBuilder.toString());
     }
 
-        public void printLastThreeGuests() {
-            stayInfoManager.getLastThreeGuests().entrySet().stream()
+    public void printLastThreeGuests() {
+        stayInfoManager.getLastThreeGuests().entrySet().stream()
                 .forEach(entry -> {
                     Room room = entry.getKey();
                     StayInfo stayInfo = entry.getValue();
@@ -133,10 +132,7 @@ public class HotelManager {
                 });
     }
 
-
     //--------------------- Room History ----------------------
-
-
     public void printAllRoomHistories() {
         roomHistoryManager.printRoomHistories();
     }
@@ -158,7 +154,7 @@ public class HotelManager {
         stayInfoManager.printStayInfo();
     }
 
-    //----------------------------------------------------
+
     public void checkInGuestInRoom(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
 
         if (room.getStatus() == RoomStatus.EMPTY) {
@@ -171,8 +167,6 @@ public class HotelManager {
             newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
 
             stayInfoManager.addStayInfo(room, new StayInfo(guest, checkInDate, checkOutDate));
-
-
             roomHistoryManager.addHistory(newRoomHistory);
             roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
         } else {
@@ -188,7 +182,6 @@ public class HotelManager {
         } else {
             System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");
         }
-
     }
 }
 

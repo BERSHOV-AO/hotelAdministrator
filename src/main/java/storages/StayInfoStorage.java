@@ -5,7 +5,6 @@ import models.StayInfo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class StayInfoStorage {
 
@@ -22,11 +21,4 @@ public class StayInfoStorage {
     public Map<Room, StayInfo> getInfoStorage() {
         return infoStorage;
     }
-
-
-
-
-
-
-
 }

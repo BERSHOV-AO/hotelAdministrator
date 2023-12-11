@@ -82,7 +82,17 @@ public class MainTest {
         hotelManager.createService(service2);
         hotelManager.createService(service3);
         hotelManager.createService(service4);
+        hotelManager.createService(service1);
+        hotelManager.createService(service3);
         hotelManager.printAllService();
+
+
+        System.out.println("--------------------------showServicesSortByPrice----------------------");
+        hotelManager.showServicesSortByPrice();
+
+        System.out.println("--------------------------showServicesSortBySection--------------------");
+        hotelManager.showServicesSortBySection();
+
 
         System.out.println("--changeServiceOnPrice--");
         hotelManager.changeServiceOnPrice(service1, 222);
@@ -122,25 +132,15 @@ public class MainTest {
 
         hotelManager.showStayInfo();
 
-        // hotelManager.sortGuestsByName();
-
-//        System.out.println("----------------------CheckOutGuestFromRoom-----------------------------");
-//        hotelManager.checkOutGuestFromRoom(guest2, room3);
-//        hotelManager.checkOutGuestFromRoom(guest3, room4);
-//
-//        hotelManager.showStayInfo();
+        hotelManager.sortGuestsByName();
 
         System.out.println("-------------------------sortGuestsByName-----------------------------");
         hotelManager.sortGuestsByName();
 
 
-//        System.out.println("------------------------showGuestsAlphabeticalOrder---------------------");
-//        hotelManager.showGuestsAlphabeticalOrder();
-
         System.out.println("----------------------showFreeRoomsByDate-----------------------------");
         // showFreeRoomsByDate
         hotelManager.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
-
 
 
         System.out.println("----------------------showPayAmountForRoom-----------------------------");
@@ -148,16 +148,15 @@ public class MainTest {
         hotelManager.showPayAmountForRoom(room6);
         hotelManager.showPayAmountForRoom(room7);
 
-        System.out.println("--------------------------showLastThreeGuests--------------------------");
-
         hotelManager.showStayInfo();
 
         System.out.println("------------------------------------------------------------------------");
 
+        System.out.println("--------------------------showLastThreeGuests--------------------------");
         // showLastThreeGuests
-       // hotelManager.showLastThreeGuests();
         hotelManager.printLastThreeGuests();
 
+        hotelManager.printDetailsOfRoom(room7);
 
 
         /**
@@ -165,7 +164,5 @@ public class MainTest {
          */
         System.out.println("----------------------printAllRoomHistories-----------------------------");
         hotelManager.printAllRoomHistories();
-
-
     }
 }

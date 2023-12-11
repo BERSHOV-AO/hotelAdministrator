@@ -75,7 +75,7 @@ public class RoomManager {
     }
 
     public int totalCountEmptyRooms() {
-       return getFreeRooms(roomsStorage.getRooms()).size();
+        return getFreeRooms(roomsStorage.getRooms()).size();
     }
 }
 
