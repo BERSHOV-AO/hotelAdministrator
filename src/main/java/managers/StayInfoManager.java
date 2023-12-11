@@ -1,5 +1,6 @@
 package managers;
 
+import models.Guest;
 import models.Room;
 import models.StayInfo;
 import storages.StayInfoStorage;
@@ -41,11 +42,11 @@ public class StayInfoManager {
 
     public List<Room> getFreeRoomsByDate(LocalDate date) {
         return stayInfoStorage.getInfoStorage().entrySet().stream()
-                .filter(entry -> entry.getValue().getCheckInDate().isAfter(date) || entry.getValue().getCheckOutDate().isBefore(date))
+                .filter(entry -> entry.getValue().getCheckInDate().isAfter(date)
+                        || entry.getValue().getCheckOutDate().isBefore(date))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
 
     public double getPayAmountForRoom(Room room) {
         return stayInfoStorage.getInfoStorage().entrySet().stream()
@@ -59,6 +60,14 @@ public class StayInfoManager {
                     return duration * pricePerNight;
                 })
                 .orElse(0.0);
+    }
+
+    public LinkedHashMap<Room, StayInfo> getLastThreeGuests() {
+        LinkedHashMap<Room, StayInfo> infoStorage = (LinkedHashMap<Room, StayInfo>) stayInfoStorage.getInfoStorage();
+        return infoStorage.entrySet().stream()
+                .skip(Math.max(0, infoStorage.size() - 3))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
     }
 }
 

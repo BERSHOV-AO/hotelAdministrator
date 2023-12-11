@@ -3,12 +3,13 @@ package storages;
 import models.Room;
 import models.StayInfo;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class StayInfoStorage {
 
-    private Map<Room, StayInfo> infoStorage = new ConcurrentHashMap<>();
+    private Map<Room, StayInfo> infoStorage = new LinkedHashMap<>();
 
     public void addStayInfo(Room room, StayInfo stayInfo) {
         infoStorage.put(room, stayInfo);

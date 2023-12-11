@@ -100,9 +100,7 @@ public class HotelManager {
     }
 
 
-
     //---------------------Stay Info -------------------------
-
     public void showGuestsAlphabeticalOrder() {
         stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
     }
@@ -119,9 +117,21 @@ public class HotelManager {
         System.out.println(stringBuilder.toString());
     }
 
+        public void printLastThreeGuests() {
+            stayInfoManager.getLastThreeGuests().entrySet().stream()
+                .forEach(entry -> {
+                    Room room = entry.getKey();
+                    StayInfo stayInfo = entry.getValue();
+                    LocalDate checkInDate = stayInfo.getCheckInDate();
+                    LocalDate checkOutDate = stayInfo.getCheckOutDate();
+                    Guest guest = stayInfo.getGuest();
 
-
-
+                    System.out.println("Room: " + room.getRoomNumber());
+                    System.out.println("Guest: " + guest.getLastName());
+                    System.out.println("Check-in date: " + checkInDate);
+                    System.out.println("Check-out date: " + checkOutDate);
+                });
+    }
 
 
     //--------------------- Room History ----------------------

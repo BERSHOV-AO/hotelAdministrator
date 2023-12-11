@@ -148,6 +148,17 @@ public class MainTest {
         hotelManager.showPayAmountForRoom(room6);
         hotelManager.showPayAmountForRoom(room7);
 
+        System.out.println("--------------------------showLastThreeGuests--------------------------");
+
+        hotelManager.showStayInfo();
+
+        System.out.println("------------------------------------------------------------------------");
+
+        // showLastThreeGuests
+       // hotelManager.showLastThreeGuests();
+        hotelManager.printLastThreeGuests();
+
+
 
         /**
          * Отдельно сохраняем историю

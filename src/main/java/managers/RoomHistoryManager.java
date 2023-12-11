@@ -13,7 +13,6 @@ public class RoomHistoryManager {
     public void addHistory(RoomHistory roomHistory) {
         roomHistoryStorage.addRoomHistory(roomHistory);
     }
-
     public void printRoomHistories() {
         List<RoomHistory> tempRoomHistories = roomHistoryStorage.getRoomHistories();
         for (RoomHistory roomHistory : tempRoomHistories) {
