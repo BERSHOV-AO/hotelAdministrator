@@ -1,35 +1,16 @@
 package managers;
 
-import models.Guest;
 import models.Room;
 import models.StayInfo;
 import storages.StayInfoStorage;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StayInfoManager {
 
     StayInfoStorage stayInfoStorage = new StayInfoStorage();
-
-//    public void addStayInfo(int roomNumber, StayInfo stayInfo) {
-//        stayInfoStorage.addStayInfo(roomNumber, stayInfo);
-//    }
-//
-//    public void deleteStayInfo(int roomNumber) {
-//        stayInfoStorage.deleteStayInfo(roomNumber);
-//    }
-//
-//    public void printStayInfo() {
-//        Map<Integer, StayInfo> tempInfoStorage = stayInfoStorage.getInfoStorage();
-//        for (Map.Entry<Integer, StayInfo> entry : tempInfoStorage.entrySet()) {
-//            System.out.println(entry.getKey() + "=" + entry.getValue());
-//        }
-//    }
 
     public void addStayInfo(Room room, StayInfo stayInfo) {
         stayInfoStorage.addStayInfo(room, stayInfo);
@@ -59,36 +40,29 @@ public class StayInfoManager {
     }
 
     public List<Room> getFreeRoomsByDate(LocalDate date) {
-//        return rooms.stream()
-//                .filter(room -> stays.stream()
-//                        .noneMatch(stay -> stay.getCheckInDate().isBefore(date) && stay.getCheckOutDate().isAfter(date)))
-//                .collect(Collectors.toList());
-
-
-//            return stayInfoStorage.getInfoStorage().stream()
-//                    .filter(room -> stays.entrySet().stream()
-//                            .noneMatch(entry -> entry.getValue().getCheckInDate().isBefore(date) && entry.getValue().getCheckOutDate().isAfter(date)))
-//                    .collect(Collectors.toList());
         return stayInfoStorage.getInfoStorage().entrySet().stream()
                 .filter(entry -> entry.getValue().getCheckInDate().isAfter(date) || entry.getValue().getCheckOutDate().isBefore(date))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-        }
-
     }
 
-//        List<HotelRoom> freeRoom = new ArrayList<>();
-//        for (HotelRoom room : rooms) {
-//            if (room.getStatus() == RoomStatus.FREE && isRoomFreeOnDate(room.getRoomNumber(), date)) {
-//                freeRoom.add(room);
-//            }
-//
-//        }
-//        return freeRoom;
-  //  }
+
+    public double getPayAmountForRoom(Room room) {
+        return stayInfoStorage.getInfoStorage().entrySet().stream()
+                .filter(entry -> entry.getKey().equals(room))
+                .findFirst()
+                .map(entry -> {
+                    LocalDate checkInDate = entry.getValue().getCheckInDate();
+                    LocalDate checkOutDate = entry.getValue().getCheckOutDate();
+                    int duration = (int) checkInDate.until(checkOutDate).getDays();
+                    double pricePerNight = room.getPrice();
+                    return duration * pricePerNight;
+                })
+                .orElse(0.0);
+    }
+}
 
 
-//}
 
 
 

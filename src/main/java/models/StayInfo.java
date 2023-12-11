@@ -7,6 +7,7 @@ public class StayInfo {
     private LocalDate checkOutDate;
     private Guest guest;
 
+
     public StayInfo(Guest guest, LocalDate checkInDate, LocalDate checkOutDate) {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;

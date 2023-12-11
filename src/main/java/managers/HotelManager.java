@@ -105,14 +105,21 @@ public class HotelManager {
 
     public void showGuestsAlphabeticalOrder() {
         stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
-
     }
 
     public void showFreeRoomsByDate(LocalDate date) {
-
         stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
-
     }
+
+    public void showPayAmountForRoom(Room room) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Pay Amount For Room : ");
+        stringBuilder.append(room.getRoomNumber() + " = ");
+        stringBuilder.append(stayInfoManager.getPayAmountForRoom(room) + " руб.");
+        System.out.println(stringBuilder.toString());
+    }
+
+
 
 
 

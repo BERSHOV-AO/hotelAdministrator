@@ -137,7 +137,16 @@ public class MainTest {
 //        System.out.println("------------------------showGuestsAlphabeticalOrder---------------------");
 //        hotelManager.showGuestsAlphabeticalOrder();
 
+        System.out.println("----------------------showFreeRoomsByDate-----------------------------");
+        // showFreeRoomsByDate
         hotelManager.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
+
+
+
+        System.out.println("----------------------showPayAmountForRoom-----------------------------");
+        // showPayAmountForRoom
+        hotelManager.showPayAmountForRoom(room6);
+        hotelManager.showPayAmountForRoom(room7);
 
 
         /**
