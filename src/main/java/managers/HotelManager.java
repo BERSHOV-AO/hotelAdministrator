@@ -100,9 +100,9 @@ public class HotelManager {
     }
 
     //---------------------Stay Info -------------------------
-    public void showGuestsAlphabeticalOrder() {
-        stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
-    }
+//    public void showGuestsAlphabeticalOrder() {
+//        stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
+//    }
 
     public void showFreeRoomsByDate(LocalDate date) {
         stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);

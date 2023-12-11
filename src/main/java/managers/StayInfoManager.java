@@ -32,13 +32,13 @@ public class StayInfoManager {
         });
     }
 
-    public List<String> getCheckedInGuestsAlphabeticalOrder() {
-        List<StayInfo> values = new ArrayList<>(stayInfoStorage.getInfoStorage().values());
-        return values.stream()
-                .map(value -> value.getGuest().getLastName())
-                .sorted()
-                .collect(Collectors.toList());
-    }
+//    public List<String> getCheckedInGuestsAlphabeticalOrder() {
+//        List<StayInfo> values = new ArrayList<>(stayInfoStorage.getInfoStorage().values());
+//        return values.stream()
+//                .map(value -> value.getGuest().getLastName())
+//                .sorted()
+//                .collect(Collectors.toList());
+//    }
 
     public List<Room> getFreeRoomsByDate(LocalDate date) {
         return stayInfoStorage.getInfoStorage().entrySet().stream()
