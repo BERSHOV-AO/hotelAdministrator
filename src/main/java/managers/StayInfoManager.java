@@ -27,18 +27,9 @@ public class StayInfoManager {
             System.out.println("Guest: " + stayInfo.getGuest().getLastName());
             System.out.println("Check-in date: " + stayInfo.getCheckInDate());
             System.out.println("Check-out date: " + stayInfo.getCheckOutDate());
-            // System.out.println("Total amount: " + stayInfo.getTotalAmount());
             System.out.println("--------------------------------------");
         });
     }
-
-//    public List<String> getCheckedInGuestsAlphabeticalOrder() {
-//        List<StayInfo> values = new ArrayList<>(stayInfoStorage.getInfoStorage().values());
-//        return values.stream()
-//                .map(value -> value.getGuest().getLastName())
-//                .sorted()
-//                .collect(Collectors.toList());
-//    }
 
     public List<Room> getFreeRoomsByDate(LocalDate date) {
         return stayInfoStorage.getInfoStorage().entrySet().stream()

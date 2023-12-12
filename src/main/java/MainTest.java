@@ -52,27 +52,27 @@ public class MainTest {
         // printDetailsOfRoom
         hotelManager.printDetailsOfRoom(room2);
 
-        System.out.println("---------------------------sortRoomsByPrice---------------------------");
+        System.out.println("---------------------------sortRoomsByPrice--------------------------");
         // sortRoomsByPrice
         hotelManager.sortRoomsByPrice();
-        System.out.println("-------------------------sortRoomsByCapacity--------------------------");
+        System.out.println("-------------------------sortRoomsByCapacity-------------------------");
         // sortRoomsByCapacity
         hotelManager.sortRoomsByCapacity();
-        System.out.println("-------------------------sortRoomsByStars-----------------------------");
+        System.out.println("-------------------------sortRoomsByStars----------------------------");
         // sortRoomsByStars
         hotelManager.sortRoomsByStars();
         // sortedEmptyRoomsByStars
-        System.out.println("--------------------sortEmptyRoomsByPrice---------------------------");
+        System.out.println("--------------------sortEmptyRoomsByPrice----------------------------");
         hotelManager.sortEmptyRoomsByPrice();
         // sortEmptyRoomsByCapacity
-        System.out.println("--------------------sortEmptyRoomsByCapacity--------------------------");
+        System.out.println("--------------------sortEmptyRoomsByCapacity-------------------------");
         hotelManager.sortEmptyRoomsByCapacity();
         // sortEmptyRoomsByStars
-        System.out.println("----------------------sortEmptyRoomsByStars---------------------------");
+        System.out.println("----------------------sortEmptyRoomsByStars--------------------------");
         hotelManager.sortEmptyRoomsByStars();
         hotelManager.totalCountEmptyRooms();
 
-        System.out.println("------------------------------SERVICE---------------------------------");
+        System.out.println("------------------------------SERVICE--------------------------------");
         Service service1 = new Service(ServiceType.BREAKFAST, 150);
         Service service2 = new Service(ServiceType.LUNCH, 100);
         Service service3 = new Service(ServiceType.DINNER, 250);
@@ -86,20 +86,18 @@ public class MainTest {
         hotelManager.createService(service3);
         hotelManager.printAllService();
 
-
-        System.out.println("--------------------------showServicesSortByPrice----------------------");
+        System.out.println("--showServicesSortByPrice--");
         hotelManager.showServicesSortByPrice();
 
-        System.out.println("--------------------------showServicesSortBySection--------------------");
+        System.out.println("--showServicesSortBySection--");
         hotelManager.showServicesSortBySection();
-
 
         System.out.println("--changeServiceOnPrice--");
         hotelManager.changeServiceOnPrice(service1, 222);
         hotelManager.changeServiceOnPrice(service2, 144);
         hotelManager.printAllService();
 
-        System.out.println("------------------------------GUEST--------------------------------");
+        System.out.println("--------------------------------GUEST---------------------------------");
         Guest guest1 = new Guest("Alex");
         Guest guest2 = new Guest("Max");
         Guest guest3 = new Guest("Svetlana");
@@ -116,7 +114,7 @@ public class MainTest {
 
         hotelManager.printAllGuest();
 
-        System.out.println("-------------------------CheckInGuestInRoom-----------------------------");
+        System.out.println("--CheckInGuestInRoom--");
         hotelManager.checkInGuestInRoom(guest1, room1, LocalDate.of(2023, 12, 05),
                 LocalDate.of(2023, 12, 10));
         hotelManager.checkInGuestInRoom(guest2, room3, LocalDate.of(2023, 12, 11),
@@ -134,35 +132,31 @@ public class MainTest {
 
         hotelManager.sortGuestsByName();
 
-        System.out.println("-------------------------sortGuestsByName-----------------------------");
+        System.out.println("--sortGuestsByName--");
         hotelManager.sortGuestsByName();
 
-
-        System.out.println("----------------------showFreeRoomsByDate-----------------------------");
+        System.out.println("--showFreeRoomsByDate--");
         // showFreeRoomsByDate
         hotelManager.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
 
-
-        System.out.println("----------------------showPayAmountForRoom-----------------------------");
+        System.out.println("--showPayAmountForRoom--");
         // showPayAmountForRoom
         hotelManager.showPayAmountForRoom(room6);
         hotelManager.showPayAmountForRoom(room7);
 
         hotelManager.showStayInfo();
 
-        System.out.println("------------------------------------------------------------------------");
-
-        System.out.println("--------------------------showLastThreeGuests--------------------------");
+        System.out.println("--showLastThreeGuests--");
         // showLastThreeGuests
         hotelManager.printLastThreeGuests();
 
+        // Room details
         hotelManager.printDetailsOfRoom(room7);
-
 
         /**
          * Отдельно сохраняем историю
          */
-        System.out.println("----------------------printAllRoomHistories-----------------------------");
+        System.out.println("--printAllRoomHistories--");
         hotelManager.printAllRoomHistories();
     }
 }

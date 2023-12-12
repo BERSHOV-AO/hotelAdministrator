@@ -14,8 +14,7 @@ public class HotelManager {
     RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
     StayInfoManager stayInfoManager = new StayInfoManager();
 
-
-    // ----------------- Service ---------------------
+    // Service
     public void showServicesSortByPrice() {
         serviceManager.sortByPrice().stream().forEach(System.out::println);
     }
@@ -24,7 +23,7 @@ public class HotelManager {
         serviceManager.sortBySection().stream().forEach(System.out::println);
     }
 
-    //------------------ Guest -----------------------
+    // Guest
     public void addGuest(Guest guest) {
         guestManager.addOnGuest(guest);
     }
@@ -41,7 +40,7 @@ public class HotelManager {
         guestManager.getSortedGuestsByAlphabet().stream().forEach(System.out::println);
     }
 
-    //------------------- Room -----------------------
+    // Room
     public void createRoom(Room room) {
         roomManager.addRoom(room);
     }
@@ -50,7 +49,6 @@ public class HotelManager {
         roomManager.changeRoomStatus(room, roomStatus);
     }
 
-    // Изменить цену номера
     public void changeRoomPrice(Room room, double price) {
         roomManager.changeRoomPrice(room, price);
     }
@@ -99,11 +97,6 @@ public class HotelManager {
         System.out.println(stringBuilder.toString());
     }
 
-    //---------------------Stay Info -------------------------
-//    public void showGuestsAlphabeticalOrder() {
-//        stayInfoManager.getCheckedInGuestsAlphabeticalOrder().forEach(System.out::println);
-//    }
-
     public void showFreeRoomsByDate(LocalDate date) {
         stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
     }
@@ -132,12 +125,12 @@ public class HotelManager {
                 });
     }
 
-    //--------------------- Room History ----------------------
+    // Room History
     public void printAllRoomHistories() {
         roomHistoryManager.printRoomHistories();
     }
 
-    // -------------------- Service ---------------------
+    // Service
     public void createService(Service service) {
         serviceManager.addService(service);
     }
@@ -153,7 +146,6 @@ public class HotelManager {
     public void showStayInfo() {
         stayInfoManager.printStayInfo();
     }
-
 
     public void checkInGuestInRoom(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
 
