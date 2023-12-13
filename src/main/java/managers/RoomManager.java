@@ -2,10 +2,8 @@ package managers;
 
 import enums.RoomStatus;
 import models.Room;
-import models.RoomHistory;
 import storages.RoomsStorage;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;

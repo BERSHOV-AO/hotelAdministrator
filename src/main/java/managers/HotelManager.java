@@ -5,7 +5,6 @@ import enums.RoomStatus;
 import models.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class HotelManager {
     RoomManager roomManager = new RoomManager();
@@ -98,7 +97,7 @@ public class HotelManager {
     }
 
     public void showFreeRoomsByDate(LocalDate date) {
-        stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
+        //stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
     }
 
     public void showPayAmountForRoom(Room room) {
@@ -112,13 +111,13 @@ public class HotelManager {
     public void printLastThreeGuests() {
         stayInfoManager.getLastThreeGuests().entrySet().stream()
                 .forEach(entry -> {
-                    Room room = entry.getKey();
+                    Integer room = entry.getKey();
                     StayInfo stayInfo = entry.getValue();
                     LocalDate checkInDate = stayInfo.getCheckInDate();
                     LocalDate checkOutDate = stayInfo.getCheckOutDate();
                     Guest guest = stayInfo.getGuest();
 
-                    System.out.println("Room: " + room.getRoomNumber());
+                    System.out.println("Room: " + room);
                     System.out.println("Guest: " + guest.getLastName());
                     System.out.println("Check-in date: " + checkInDate);
                     System.out.println("Check-out date: " + checkOutDate);
@@ -158,7 +157,7 @@ public class HotelManager {
             newRoomHistory.setCheckOutDate(checkOutDate);
             newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
 
-            stayInfoManager.addStayInfo(room, new StayInfo(guest, checkInDate, checkOutDate));
+            stayInfoManager.addStayInfo(room , new StayInfo(guest, checkInDate, checkOutDate));
             roomHistoryManager.addHistory(newRoomHistory);
             roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
         } else {

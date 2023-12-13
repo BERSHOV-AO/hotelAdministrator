@@ -1,6 +1,5 @@
 package storages;
 
-import models.Room;
 import models.StayInfo;
 
 import java.util.LinkedHashMap;
@@ -8,17 +7,17 @@ import java.util.Map;
 
 public class StayInfoStorage {
 
-    private Map<Room, StayInfo> infoStorage = new LinkedHashMap<>();
+    private Map<Integer, StayInfo> infoStorage = new LinkedHashMap<>();
 
-    public void addStayInfo(Room room, StayInfo stayInfo) {
-        infoStorage.put(room, stayInfo);
+    public void addStayInfo(Integer roomNumber, StayInfo stayInfo) {
+        infoStorage.put(roomNumber, stayInfo);
     }
 
-    public void deleteStayInfo(Room room) {
-        infoStorage.remove(room);
+    public void deleteStayInfo(Integer roomNumber) {
+        infoStorage.remove(roomNumber);
     }
 
-    public Map<Room, StayInfo> getInfoStorage() {
+    public Map<Integer, StayInfo> getInfoStorage() {
         return infoStorage;
     }
 }
