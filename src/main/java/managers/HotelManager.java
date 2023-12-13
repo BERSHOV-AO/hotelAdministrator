@@ -97,7 +97,9 @@ public class HotelManager {
     }
 
     public void showFreeRoomsByDate(LocalDate date) {
-        //stayInfoManager.getFreeRoomsByDate(date).forEach(System.out::println);
+         stayInfoManager.getFreeRoomsByDate(date).stream()
+                 .forEach(item -> System.out.println("Комната с номером: " + item +
+                         ", буде свободна - " + date.toString()));
     }
 
     public void showPayAmountForRoom(Room room) {
