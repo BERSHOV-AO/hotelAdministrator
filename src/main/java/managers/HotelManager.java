@@ -97,9 +97,9 @@ public class HotelManager {
     }
 
     public void showFreeRoomsByDate(LocalDate date) {
-         stayInfoManager.getFreeRoomsByDate(date).stream()
-                 .forEach(item -> System.out.println("Комната с номером: " + item +
-                         ", буде свободна - " + date.toString()));
+        stayInfoManager.getFreeRoomsByDate(date).stream()
+                .forEach(item -> System.out.println("Комната с номером: " + item +
+                        ", буде свободна - " + date.toString()));
     }
 
     public void showPayAmountForRoom(Room room) {
@@ -159,7 +159,7 @@ public class HotelManager {
             newRoomHistory.setCheckOutDate(checkOutDate);
             newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
 
-            stayInfoManager.addStayInfo(room , new StayInfo(guest, checkInDate, checkOutDate));
+            stayInfoManager.addStayInfo(room.getRoomNumber() , new StayInfo(guest, checkInDate, checkOutDate));
             roomHistoryManager.addHistory(newRoomHistory);
             roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
         } else {
@@ -170,7 +170,7 @@ public class HotelManager {
 
     public void checkOutGuestFromRoom(Guest guest, Room room) {
         if (room.getStatus() == RoomStatus.OCCUPIED) {
-            stayInfoManager.deleteStayInfo(room);
+            stayInfoManager.deleteStayInfo(room.getRoomNumber());
             roomManager.changeRoomStatus(room, RoomStatus.EMPTY);
         } else {
             System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");

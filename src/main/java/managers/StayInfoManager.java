@@ -14,14 +14,13 @@ public class StayInfoManager {
 
     StayInfoStorage stayInfoStorage = new StayInfoStorage();
 
-    public void addStayInfo(Room room, StayInfo stayInfo) {
-        stayInfoStorage.addStayInfo(room.getRoomNumber(), stayInfo);
+    public void addStayInfo(Integer roomNumber, StayInfo stayInfo) {
+        stayInfoStorage.addStayInfo(roomNumber, stayInfo);
     }
 
-    public void deleteStayInfo(Room room) {
-        stayInfoStorage.deleteStayInfo(room.getRoomNumber());
+    public void deleteStayInfo(Integer roomNumber) {
+        stayInfoStorage.deleteStayInfo(roomNumber);
     }
-
 
     public void printStayInfo() {
         for (Map.Entry<Integer, StayInfo> entry : stayInfoStorage.getInfoStorage().entrySet()) {
@@ -45,8 +44,6 @@ public class StayInfoManager {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
-
 
     public double getPayAmountForRoom(Room room) {
         return stayInfoStorage.getInfoStorage().entrySet().stream()

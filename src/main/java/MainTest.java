@@ -52,23 +52,23 @@ public class MainTest {
         // printDetailsOfRoom
         hotelManager.printDetailsOfRoom(room2);
 
-        System.out.println("---------------------------sortRoomsByPrice--------------------------");
+        System.out.println("--sortRoomsByPrice--");
         // sortRoomsByPrice
         hotelManager.sortRoomsByPrice();
-        System.out.println("-------------------------sortRoomsByCapacity-------------------------");
+        System.out.println("--sortRoomsByCapacity--");
         // sortRoomsByCapacity
         hotelManager.sortRoomsByCapacity();
-        System.out.println("-------------------------sortRoomsByStars----------------------------");
+        System.out.println("--sortRoomsByStars--");
         // sortRoomsByStars
         hotelManager.sortRoomsByStars();
         // sortedEmptyRoomsByStars
-        System.out.println("--------------------sortEmptyRoomsByPrice----------------------------");
+        System.out.println("--sortEmptyRoomsByPrice--");
         hotelManager.sortEmptyRoomsByPrice();
         // sortEmptyRoomsByCapacity
-        System.out.println("--------------------sortEmptyRoomsByCapacity-------------------------");
+        System.out.println("--sortEmptyRoomsByCapacity--");
         hotelManager.sortEmptyRoomsByCapacity();
         // sortEmptyRoomsByStars
-        System.out.println("----------------------sortEmptyRoomsByStars--------------------------");
+        System.out.println("--sortEmptyRoomsByStars--");
         hotelManager.sortEmptyRoomsByStars();
         hotelManager.totalCountEmptyRooms();
 
