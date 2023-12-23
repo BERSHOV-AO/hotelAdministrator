@@ -1,6 +1,6 @@
 import enums.RoomStatus;
 import enums.ServiceType;
-import managers.HotelManager;
+import view.HotelManagerImpl;
 import models.Guest;
 import models.Room;
 import models.Service;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class MainTest {
     public static void main(String[] args) {
 
-        HotelManager hotelManager = new HotelManager();
+        HotelManagerImpl hotelManagerImpl = new HotelManagerImpl();
 
         System.out.println("------------------------------ROOM--------------------------------");
         Room room1 = new Room(1, 1, 1000, 3, RoomStatus.EMPTY);
@@ -24,53 +24,53 @@ public class MainTest {
         Room room9 = new Room(9, 1, 3000, 3, RoomStatus.EMPTY);
         Room room10 = new Room(10, 2, 2200, 2, RoomStatus.EMPTY);
 
-        hotelManager.createRoom(room1);
-        hotelManager.createRoom(room2);
-        hotelManager.createRoom(room3);
-        hotelManager.createRoom(room4);
-        hotelManager.createRoom(room5);
-        hotelManager.createRoom(room6);
-        hotelManager.createRoom(room7);
-        hotelManager.createRoom(room8);
-        hotelManager.createRoom(room9);
-        hotelManager.createRoom(room10);
+        hotelManagerImpl.createRoom(room1);
+        hotelManagerImpl.createRoom(room2);
+        hotelManagerImpl.createRoom(room3);
+        hotelManagerImpl.createRoom(room4);
+        hotelManagerImpl.createRoom(room5);
+        hotelManagerImpl.createRoom(room6);
+        hotelManagerImpl.createRoom(room7);
+        hotelManagerImpl.createRoom(room8);
+        hotelManagerImpl.createRoom(room9);
+        hotelManagerImpl.createRoom(room10);
 
-        hotelManager.printAllRooms();
+        hotelManagerImpl.printAllRooms();
 
         System.out.println("--changeRoomStatus--");
         // changeRoomStatus
-        hotelManager.changeRoomStatus(room1, RoomStatus.UNDER_REPAIR);
-        hotelManager.changeRoomStatus(room2, RoomStatus.SERVICE);
-        hotelManager.printAllRooms();
+        hotelManagerImpl.changeRoomStatus(room1, RoomStatus.UNDER_REPAIR);
+        hotelManagerImpl.changeRoomStatus(room2, RoomStatus.SERVICE);
+        hotelManagerImpl.printAllRooms();
 
         System.out.println("--changeRoomPrice--");
         // changeRoomPrice
-        hotelManager.changeRoomPrice(room3, 3000);
-        hotelManager.changeRoomPrice(room4, 2800);
-        hotelManager.printAllRooms();
+        hotelManagerImpl.changeRoomPrice(room3, 3000);
+        hotelManagerImpl.changeRoomPrice(room4, 2800);
+        hotelManagerImpl.printAllRooms();
 
         // printDetailsOfRoom
-        hotelManager.printDetailsOfRoom(room2);
+        hotelManagerImpl.printDetailsOfRoom(room2);
 
         System.out.println("--sortRoomsByPrice--");
         // sortRoomsByPrice
-        hotelManager.sortRoomsByPrice();
+        hotelManagerImpl.sortRoomsByPrice();
         System.out.println("--sortRoomsByCapacity--");
         // sortRoomsByCapacity
-        hotelManager.sortRoomsByCapacity();
+        hotelManagerImpl.sortRoomsByCapacity();
         System.out.println("--sortRoomsByStars--");
         // sortRoomsByStars
-        hotelManager.sortRoomsByStars();
+        hotelManagerImpl.sortRoomsByStars();
         // sortedEmptyRoomsByStars
         System.out.println("--sortEmptyRoomsByPrice--");
-        hotelManager.sortEmptyRoomsByPrice();
+        hotelManagerImpl.sortEmptyRoomsByPrice();
         // sortEmptyRoomsByCapacity
         System.out.println("--sortEmptyRoomsByCapacity--");
-        hotelManager.sortEmptyRoomsByCapacity();
+        hotelManagerImpl.sortEmptyRoomsByCapacity();
         // sortEmptyRoomsByStars
         System.out.println("--sortEmptyRoomsByStars--");
-        hotelManager.sortEmptyRoomsByStars();
-        hotelManager.totalCountEmptyRooms();
+        hotelManagerImpl.sortEmptyRoomsByStars();
+        hotelManagerImpl.totalCountEmptyRooms();
 
         System.out.println("------------------------------SERVICE--------------------------------");
         Service service1 = new Service(ServiceType.BREAKFAST, 150);
@@ -78,24 +78,24 @@ public class MainTest {
         Service service3 = new Service(ServiceType.DINNER, 250);
         Service service4 = new Service(ServiceType.LAUNDRY, 120);
 
-        hotelManager.createService(service1);
-        hotelManager.createService(service2);
-        hotelManager.createService(service3);
-        hotelManager.createService(service4);
-        hotelManager.createService(service1);
-        hotelManager.createService(service3);
-        hotelManager.printAllService();
+        hotelManagerImpl.createService(service1);
+        hotelManagerImpl.createService(service2);
+        hotelManagerImpl.createService(service3);
+        hotelManagerImpl.createService(service4);
+        hotelManagerImpl.createService(service1);
+        hotelManagerImpl.createService(service3);
+        hotelManagerImpl.printAllService();
 
         System.out.println("--showServicesSortByPrice--");
-        hotelManager.showServicesSortByPrice();
+        hotelManagerImpl.showServicesSortByPrice();
 
         System.out.println("--showServicesSortBySection--");
-        hotelManager.showServicesSortBySection();
+        hotelManagerImpl.showServicesSortBySection();
 
         System.out.println("--changeServiceOnPrice--");
-        hotelManager.changeServiceOnPrice(service1, 222);
-        hotelManager.changeServiceOnPrice(service2, 144);
-        hotelManager.printAllService();
+        hotelManagerImpl.changeServiceOnPrice(service1, 222);
+        hotelManagerImpl.changeServiceOnPrice(service2, 144);
+        hotelManagerImpl.printAllService();
 
         System.out.println("--------------------------------GUEST---------------------------------");
         Guest guest1 = new Guest("Alex");
@@ -105,58 +105,58 @@ public class MainTest {
         Guest guest5 = new Guest("Irina");
         Guest guest6 = new Guest("Aleksey");
 
-        hotelManager.addGuest(guest1);
-        hotelManager.addGuest(guest2);
-        hotelManager.addGuest(guest3);
-        hotelManager.addGuest(guest4);
-        hotelManager.addGuest(guest5);
-        hotelManager.addGuest(guest6);
+        hotelManagerImpl.addGuest(guest1);
+        hotelManagerImpl.addGuest(guest2);
+        hotelManagerImpl.addGuest(guest3);
+        hotelManagerImpl.addGuest(guest4);
+        hotelManagerImpl.addGuest(guest5);
+        hotelManagerImpl.addGuest(guest6);
 
-        hotelManager.printAllGuest();
+        hotelManagerImpl.printAllGuest();
 
         System.out.println("--CheckInGuestInRoom--");
-        hotelManager.checkInGuestInRoom(guest1, room1, LocalDate.of(2023, 12, 05),
+        hotelManagerImpl.checkInGuestInRoom(guest1, room1, LocalDate.of(2023, 12, 05),
                 LocalDate.of(2023, 12, 10));
-        hotelManager.checkInGuestInRoom(guest2, room3, LocalDate.of(2023, 12, 11),
+        hotelManagerImpl.checkInGuestInRoom(guest2, room3, LocalDate.of(2023, 12, 11),
                 LocalDate.of(2023, 12, 17));
-        hotelManager.checkInGuestInRoom(guest3, room4, LocalDate.of(2023, 12, 07),
+        hotelManagerImpl.checkInGuestInRoom(guest3, room4, LocalDate.of(2023, 12, 07),
                 LocalDate.of(2023, 12, 21));
-        hotelManager.checkInGuestInRoom(guest4, room5, LocalDate.of(2023, 12, 10),
+        hotelManagerImpl.checkInGuestInRoom(guest4, room5, LocalDate.of(2023, 12, 10),
                 LocalDate.of(2023, 12, 13));
-        hotelManager.checkInGuestInRoom(guest5, room6, LocalDate.of(2023, 12, 16),
+        hotelManagerImpl.checkInGuestInRoom(guest5, room6, LocalDate.of(2023, 12, 16),
                 LocalDate.of(2023, 12, 28));
-        hotelManager.checkInGuestInRoom(guest6, room7, LocalDate.of(2023, 12, 15),
+        hotelManagerImpl.checkInGuestInRoom(guest6, room7, LocalDate.of(2023, 12, 15),
                 LocalDate.of(2023, 12, 23));
 
-        hotelManager.showStayInfo();
+        hotelManagerImpl.showStayInfo();
 
-        hotelManager.sortGuestsByName();
+        hotelManagerImpl.sortGuestsByName();
 
         System.out.println("--sortGuestsByName--");
-        hotelManager.sortGuestsByName();
+        hotelManagerImpl.sortGuestsByName();
 
         System.out.println("--showFreeRoomsByDate--");
         // showFreeRoomsByDate
-        hotelManager.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
+        hotelManagerImpl.showFreeRoomsByDate(LocalDate.of(2023, 12, 12));
 
         System.out.println("--showPayAmountForRoom--");
         // showPayAmountForRoom
-        hotelManager.showPayAmountForRoom(room6);
-        hotelManager.showPayAmountForRoom(room7);
+        hotelManagerImpl.showPayAmountForRoom(room6);
+        hotelManagerImpl.showPayAmountForRoom(room7);
 
-        hotelManager.showStayInfo();
+        hotelManagerImpl.showStayInfo();
 
         System.out.println("--showLastThreeGuests--");
         // showLastThreeGuests
-        hotelManager.printLastThreeGuests();
+        hotelManagerImpl.printLastThreeGuests();
 
         // Room details
-        hotelManager.printDetailsOfRoom(room7);
+        hotelManagerImpl.printDetailsOfRoom(room7);
 
         /**
          * Отдельно сохраняем историю
          */
         System.out.println("--printAllRoomHistories--");
-        hotelManager.printAllRoomHistories();
+        hotelManagerImpl.printAllRoomHistories();
     }
 }

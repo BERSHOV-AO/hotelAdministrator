@@ -1,33 +1,39 @@
-package managers;
+package controllers;
 
+import api.controllers.GuestManager;
 import models.Guest;
-import storages.GuestStorage;
+import storages.GuestStorageImpl;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GuestManager {
+public class GuestManagerImpl implements GuestManager {
 
-    GuestStorage guestStorage = new GuestStorage();
+    public GuestManagerImpl() {
+    }
 
+    @Override
     public void addOnGuest(Guest guest) {
-        guestStorage.addGuest(guest);
+        GuestStorageImpl.getInstance().addGuest(guest);
     }
 
+    @Override
     public void deleteGuest(Guest guest) {
-        guestStorage.deleteGuest(guest);
+        GuestStorageImpl.getInstance().deleteGuest(guest);
     }
 
+    @Override
     public void printGuest() {
-        List<Guest> tempGuest = guestStorage.getGuests();
+        List<Guest> tempGuest = GuestStorageImpl.getInstance().getGuests();
         for (Guest guest : tempGuest) {
             System.out.println(guest);
         }
     }
 
+    @Override
     public List<Guest> getSortedGuestsByAlphabet() {
-        return guestStorage.getGuests().stream()
+        return GuestStorageImpl.getInstance().getGuests().stream()
                 .sorted(Comparator.comparing(Guest::getLastName))
                 .collect(Collectors.toList());
     }

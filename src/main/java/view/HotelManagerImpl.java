@@ -1,117 +1,148 @@
-package managers;
+package view;
 
+import api.view.HotelManager;
 import enums.RoomHistoryStatus;
 import enums.RoomStatus;
+import controllers.*;
 import models.*;
 
 import java.time.LocalDate;
 
-public class HotelManager {
-    RoomManager roomManager = new RoomManager();
-    ServiceManager serviceManager = new ServiceManager();
-    GuestManager guestManager = new GuestManager();
-    RoomHistoryManager roomHistoryManager = new RoomHistoryManager();
-    StayInfoManager stayInfoManager = new StayInfoManager();
+public class HotelManagerImpl implements HotelManager {
+//    RoomManagerImpl roomManagerImpl = new RoomManagerImpl();
+//    ServiceManagerImpl serviceManagerImpl = new ServiceManagerImpl();
+//    GuestManagerImpl guestManagerImpl = new GuestManagerImpl();
+//    RoomHistoryManagerImpl roomHistoryManagerImpl = new RoomHistoryManagerImpl();
+//    StayInfoManagerImpl stayInfoManagerImpl = new StayInfoManagerImpl();
+
+
+    RoomManagerImpl roomManagerImpl = new RoomManagerImpl();
+    ServiceManagerImpl serviceManagerImpl = new ServiceManagerImpl();
+    GuestManagerImpl guestManagerImpl = new GuestManagerImpl();
+    RoomHistoryManagerImpl roomHistoryManagerImpl = new RoomHistoryManagerImpl();
+    StayInfoManagerImpl stayInfoManagerImpl = new StayInfoManagerImpl();
+
 
     // Service
+    @Override
     public void showServicesSortByPrice() {
-        serviceManager.sortByPrice().stream().forEach(System.out::println);
+        serviceManagerImpl.sortByPrice().stream().forEach(System.out::println);
     }
 
+    @Override
     public void showServicesSortBySection() {
-        serviceManager.sortBySection().stream().forEach(System.out::println);
+        serviceManagerImpl.sortBySection().stream().forEach(System.out::println);
     }
 
     // Guest
+    @Override
     public void addGuest(Guest guest) {
-        guestManager.addOnGuest(guest);
+        guestManagerImpl.addOnGuest(guest);
     }
 
+    @Override
     public void deleteGuest(Guest guest) {
-        guestManager.deleteGuest(guest);
+        guestManagerImpl.deleteGuest(guest);
     }
 
+    @Override
     public void printAllGuest() {
-        guestManager.printGuest();
+        guestManagerImpl.printGuest();
     }
 
+    @Override
     public void sortGuestsByName() {
-        guestManager.getSortedGuestsByAlphabet().stream().forEach(System.out::println);
+        guestManagerImpl.getSortedGuestsByAlphabet().stream().forEach(System.out::println);
     }
 
     // Room
+    @Override
     public void createRoom(Room room) {
-        roomManager.addRoom(room);
+        roomManagerImpl.addRoom(room);
     }
 
+    @Override
     public void changeRoomStatus(Room room, RoomStatus roomStatus) {
-        roomManager.changeRoomStatus(room, roomStatus);
+        roomManagerImpl.changeRoomStatus(room, roomStatus);
     }
 
+    @Override
     public void changeRoomPrice(Room room, double price) {
-        roomManager.changeRoomPrice(room, price);
+        roomManagerImpl.changeRoomPrice(room, price);
     }
 
+    @Override
     public void printAllRooms() {
-        roomManager.printRooms();
+        roomManagerImpl.printRooms();
     }
 
+    @Override
     public void printDetailsOfRoom(Room room) {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Room details: ");
-        stringBuilder.append(roomManager.getRoomDetails(room));
+        stringBuilder.append(roomManagerImpl.getRoomDetails(room));
         System.out.println(stringBuilder.toString());
     }
 
+    @Override
     public void sortRoomsByPrice() {
-        roomManager.getSortedRoomsByPrice().stream().forEach(System.out::println);
+        roomManagerImpl.getSortedRoomsByPrice().stream().forEach(System.out::println);
     }
 
+    @Override
     public void sortRoomsByCapacity() {
-        roomManager.getSortedRoomsByCapacity().stream().forEach(System.out::println);
+        roomManagerImpl.getSortedRoomsByCapacity().stream().forEach(System.out::println);
     }
 
+    @Override
     public void sortRoomsByStars() {
-        roomManager.getSortedRoomsByStars().stream().forEach(System.out::println);
+        roomManagerImpl.getSortedRoomsByStars().stream().forEach(System.out::println);
     }
 
+    @Override
     public void sortEmptyRoomsByPrice() {
-        roomManager.getFreeRooms(roomManager.getSortedRoomsByPrice()).stream().forEach(System.out::println);
+        roomManagerImpl.getFreeRooms(roomManagerImpl.getSortedRoomsByPrice()).stream().forEach(System.out::println);
     }
 
+    @Override
     public void sortEmptyRoomsByCapacity() {
-        roomManager.getFreeRooms(roomManager.getSortedRoomsByCapacity()).stream().forEach(System.out::println);
+        roomManagerImpl.getFreeRooms(roomManagerImpl.getSortedRoomsByCapacity()).stream().forEach(System.out::println);
     }
 
+    @Override
     public void sortEmptyRoomsByStars() {
-        roomManager.getFreeRooms(roomManager.getSortedRoomsByStars()).stream().forEach(System.out::println);
+        roomManagerImpl.getFreeRooms(roomManagerImpl.getSortedRoomsByStars()).stream().forEach(System.out::println);
     }
 
+    @Override
     public void totalCountEmptyRooms() {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("total Count Empty Rooms: ");
-        stringBuilder.append(roomManager.totalCountEmptyRooms());
+        stringBuilder.append(roomManagerImpl.totalCountEmptyRooms());
         System.out.println(stringBuilder.toString());
     }
 
+    @Override
     public void showFreeRoomsByDate(LocalDate date) {
-        stayInfoManager.getFreeRoomsByDate(date).stream()
+        stayInfoManagerImpl.getFreeRoomsByDate(date).stream()
                 .forEach(item -> System.out.println("Комната с номером: " + item +
                         ", буде свободна - " + date.toString()));
     }
 
+    @Override
     public void showPayAmountForRoom(Room room) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Pay Amount For Room : ");
         stringBuilder.append(room.getRoomNumber() + " = ");
-        stringBuilder.append(stayInfoManager.getPayAmountForRoom(room) + " руб.");
+        stringBuilder.append(stayInfoManagerImpl.getPayAmountForRoom(room) + " руб.");
         System.out.println(stringBuilder.toString());
     }
 
+    @Override
     public void printLastThreeGuests() {
-        stayInfoManager.getLastThreeGuests().entrySet().stream()
+        stayInfoManagerImpl.getLastThreeGuests().entrySet().stream()
                 .forEach(entry -> {
                     Integer room = entry.getKey();
                     StayInfo stayInfo = entry.getValue();
@@ -127,27 +158,33 @@ public class HotelManager {
     }
 
     // Room History
+    @Override
     public void printAllRoomHistories() {
-        roomHistoryManager.printRoomHistories();
+        roomHistoryManagerImpl.printRoomHistories();
     }
 
     // Service
+    @Override
     public void createService(Service service) {
-        serviceManager.addService(service);
+        serviceManagerImpl.addService(service);
     }
 
+    @Override
     public void changeServiceOnPrice(Service service, double price) {
-        serviceManager.changeServicePrice(service, price);
+        serviceManagerImpl.changeServicePrice(service, price);
     }
 
+    @Override
     public void printAllService() {
-        serviceManager.printService();
+        serviceManagerImpl.printService();
     }
 
+    @Override
     public void showStayInfo() {
-        stayInfoManager.printStayInfo();
+        stayInfoManagerImpl.printStayInfo();
     }
 
+    @Override
     public void checkInGuestInRoom(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
 
         if (room.getStatus() == RoomStatus.EMPTY) {
@@ -159,19 +196,20 @@ public class HotelManager {
             newRoomHistory.setCheckOutDate(checkOutDate);
             newRoomHistory.setStatus(RoomHistoryStatus.CHECKIN);
 
-            stayInfoManager.addStayInfo(room.getRoomNumber() , new StayInfo(guest, checkInDate, checkOutDate));
-            roomHistoryManager.addHistory(newRoomHistory);
-            roomManager.changeRoomStatus(room, RoomStatus.OCCUPIED);
+            stayInfoManagerImpl.addStayInfo(room.getRoomNumber(), new StayInfo(guest, checkInDate, checkOutDate));
+            roomHistoryManagerImpl.addHistory(newRoomHistory);
+            roomManagerImpl.changeRoomStatus(room, RoomStatus.OCCUPIED);
         } else {
             System.out.println("Заселить в комнату " + room.getRoomNumber() + " не представляется возможным. "
                     + "Статус комнаты = " + room.getStatus());
         }
     }
 
+    @Override
     public void checkOutGuestFromRoom(Guest guest, Room room) {
         if (room.getStatus() == RoomStatus.OCCUPIED) {
-            stayInfoManager.deleteStayInfo(room.getRoomNumber());
-            roomManager.changeRoomStatus(room, RoomStatus.EMPTY);
+            stayInfoManagerImpl.deleteStayInfo(room.getRoomNumber());
+            roomManagerImpl.changeRoomStatus(room, RoomStatus.EMPTY);
         } else {
             System.out.println("В комнате " + room.getRoomNumber() + " нет посетителей");
         }

@@ -1,8 +1,9 @@
-package managers;
+package controllers;
 
+import api.controllers.StayInfoManager;
 import models.Room;
 import models.StayInfo;
-import storages.StayInfoStorage;
+import storages.StayInfoStorageImpl;
 
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -10,20 +11,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class StayInfoManager {
+public class StayInfoManagerImpl implements StayInfoManager {
 
-    StayInfoStorage stayInfoStorage = new StayInfoStorage();
-
+    @Override
     public void addStayInfo(Integer roomNumber, StayInfo stayInfo) {
-        stayInfoStorage.addStayInfo(roomNumber, stayInfo);
+        StayInfoStorageImpl.getInstance().addStayInfo(roomNumber, stayInfo);
     }
 
+    @Override
     public void deleteStayInfo(Integer roomNumber) {
-        stayInfoStorage.deleteStayInfo(roomNumber);
+        StayInfoStorageImpl.getInstance().deleteStayInfo(roomNumber);
     }
 
+    @Override
     public void printStayInfo() {
-        for (Map.Entry<Integer, StayInfo> entry : stayInfoStorage.getInfoStorage().entrySet()) {
+        for (Map.Entry<Integer, StayInfo> entry : StayInfoStorageImpl.getInstance().getInfoStorage().entrySet()) {
             Integer room = entry.getKey();
             StayInfo stayInfo = entry.getValue();
 
@@ -35,8 +37,9 @@ public class StayInfoManager {
         }
     }
 
+    @Override
     public List<Integer> getFreeRoomsByDate(LocalDate date) {
-        return stayInfoStorage.getInfoStorage().entrySet().stream()
+        return StayInfoStorageImpl.getInstance().getInfoStorage().entrySet().stream()
                 .filter(entry -> entry.getValue().getCheckInDate().isAfter(date)
                         || entry.getValue().getCheckOutDate().isBefore(date)
                         || entry.getValue().getCheckInDate().isEqual(date)
@@ -45,8 +48,9 @@ public class StayInfoManager {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public double getPayAmountForRoom(Room room) {
-        return stayInfoStorage.getInfoStorage().entrySet().stream()
+        return StayInfoStorageImpl.getInstance().getInfoStorage().entrySet().stream()
                 .filter(entry -> entry.getKey().equals(room.getRoomNumber()))
                 .findFirst()
                 .map(entry -> {
@@ -59,16 +63,13 @@ public class StayInfoManager {
                 .orElse(0.0);
     }
 
+    @Override
     public LinkedHashMap<Integer, StayInfo> getLastThreeGuests() {
-        LinkedHashMap<Integer, StayInfo> infoStorage = (LinkedHashMap<Integer, StayInfo>) stayInfoStorage.getInfoStorage();
+        LinkedHashMap<Integer, StayInfo> infoStorage = (LinkedHashMap<Integer, StayInfo>)
+                StayInfoStorageImpl.getInstance().getInfoStorage();
         return infoStorage.entrySet().stream()
                 .skip(Math.max(0, infoStorage.size() - 3))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue, LinkedHashMap::new));
     }
 }
-
-
-
-
-
