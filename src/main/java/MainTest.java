@@ -10,7 +10,9 @@ import java.time.LocalDate;
 public class MainTest {
     public static void main(String[] args) {
 
-        HotelManagerImpl hotelManagerImpl = new HotelManagerImpl();
+//        HotelManagerImpl hotelManagerImpl = new HotelManagerImpl();
+        // заглушка
+        HotelManagerImpl hotelManagerImpl = HotelManagerImpl.getInstance();
 
         System.out.println("------------------------------ROOM--------------------------------");
         Room room1 = new Room(1, 1, 1000, 3, RoomStatus.EMPTY);

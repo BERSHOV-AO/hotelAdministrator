@@ -5,16 +5,23 @@ import enums.RoomHistoryStatus;
 import enums.RoomStatus;
 import controllers.*;
 import models.*;
+import storages.StayInfoStorageImpl;
 
 import java.time.LocalDate;
 
 public class HotelManagerImpl implements HotelManager {
-//    RoomManagerImpl roomManagerImpl = new RoomManagerImpl();
-//    ServiceManagerImpl serviceManagerImpl = new ServiceManagerImpl();
-//    GuestManagerImpl guestManagerImpl = new GuestManagerImpl();
-//    RoomHistoryManagerImpl roomHistoryManagerImpl = new RoomHistoryManagerImpl();
-//    StayInfoManagerImpl stayInfoManagerImpl = new StayInfoManagerImpl();
 
+    private static HotelManagerImpl instance;
+
+    private HotelManagerImpl() {
+    }
+
+    public static HotelManagerImpl getInstance() {
+        if (instance == null) {
+            instance = new HotelManagerImpl();
+        }
+        return instance;
+    }
 
     RoomManagerImpl roomManagerImpl = new RoomManagerImpl();
     ServiceManagerImpl serviceManagerImpl = new ServiceManagerImpl();
