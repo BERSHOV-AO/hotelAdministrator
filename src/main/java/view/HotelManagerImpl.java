@@ -5,7 +5,6 @@ import enums.RoomHistoryStatus;
 import enums.RoomStatus;
 import controllers.*;
 import models.*;
-import storages.StayInfoStorageImpl;
 
 import java.time.LocalDate;
 
@@ -28,7 +27,6 @@ public class HotelManagerImpl implements HotelManager {
     GuestManagerImpl guestManagerImpl = new GuestManagerImpl();
     RoomHistoryManagerImpl roomHistoryManagerImpl = new RoomHistoryManagerImpl();
     StayInfoManagerImpl stayInfoManagerImpl = new StayInfoManagerImpl();
-
 
     // Service
     @Override

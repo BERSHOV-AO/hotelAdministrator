@@ -1,6 +1,5 @@
 package storages;
 
-import api.storages.ServicesStorage;
 import api.storages.StayInfoStorage;
 import models.StayInfo;
 
